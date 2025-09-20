@@ -4,11 +4,15 @@ import { fetchCountries } from './countrySlice';
 
 export default function CountryComponent() {
   const dispatch = useDispatch();
-  const { countries, loading, error } = useSelector((state) => state.countries);
+  const countries = useSelector((state) => state.countries.countries); // <-- IMPORTANT
+  const loading = useSelector((state) => state.countries.loading);
+  const error = useSelector((state) => state.countries.error);
 
   useEffect(() => {
-    if (countries.length === 0) dispatch(fetchCountries());
-  }, [dispatch, countries.length]);
+    if (!countries || countries.length === 0) {
+      dispatch(fetchCountries());
+    }
+  }, [dispatch, countries]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
