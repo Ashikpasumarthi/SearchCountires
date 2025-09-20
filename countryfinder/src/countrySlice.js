@@ -28,7 +28,9 @@ const countrySlice = createSlice({
             })
             .addCase(fetchCountries.fulfilled, (state, action) => {
                 state.loading = false;
-                state.countries = Array.isArray(action.payload) ? action.payload : [];
+                state.countries = Array.isArray(action.payload.countries)
+                    ? action.payload.countries
+                    : [];
             })
             .addCase(fetchCountries.rejected, (state, action) => {
                 state.loading = false;

@@ -4,12 +4,12 @@ import { fetchCountries } from './countrySlice';
 
 export default function CountryComponent() {
   const dispatch = useDispatch();
-  const countries = useSelector((state) => state.countries.countries); // <-- IMPORTANT
+  const countries = useSelector((state) => state.countries.countries); 
   const loading = useSelector((state) => state.countries.loading);
   const error = useSelector((state) => state.countries.error);
 
   useEffect(() => {
-    if (!countries || countries.length === 0) {
+    if (!countries[0] || countries[0].length === 0) {
       dispatch(fetchCountries());
     }
   }, [dispatch, countries]);
@@ -19,7 +19,7 @@ export default function CountryComponent() {
 
   return (
     <div>
-      {countries.map((country) => (
+      {countries[0].map((country) => (
         <div key={country.common}>
           <img src={country.png} alt={country.common} width={50} />
           {country.common}
