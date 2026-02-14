@@ -2,9 +2,8 @@ import { configureStore } from '@reduxjs/toolkit';
 import reducerMapping from './rootReducer';
 
 const countryStore = configureStore({
-    reducer: {
-        countries: reducerMapping
-    }
+    reducer:  reducerMapping
+    
 })
 
 export default countryStore;
