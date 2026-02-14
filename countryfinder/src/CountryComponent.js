@@ -14,6 +14,7 @@ export default function CountryComponent() {
 
   const [input, setInput] = useState('');
   const [show, setShow] = useState(false);
+  console.log(show)
 
   // useEffect(() => {
   //   if (!Array.isArray(countries) || countries.length === 0) {
