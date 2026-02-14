@@ -22,10 +22,10 @@ export default function CountryComponent() {
   // }, [dispatch, countries]);
 
   useEffect(() => {
-  if (!Array.isArray(countries) || countries.length === 0) {
-    dispatch(fetchCountries());
-  }
-}, [dispatch, countries]);
+    if (!Array.isArray(countries) || countries.length === 0) {
+      dispatch(fetchCountries());
+    }
+  }, [dispatch, countries]);
 
 
   const filteredCountries = Array.isArray(countries)
@@ -47,19 +47,19 @@ export default function CountryComponent() {
         marginBottom: '1rem'
       }} type='text' onFocus={() => setShow(true)} onBlur={() => setShow(false)} value={input} onChange={(e) => setInput(e.target.value)}
       />
-      {
-        show && (
-          <div className={styles.countriesContainer}>
-            {Array.isArray(dataToShow) &&
-              dataToShow.map((country) => (
-                <div key={country.common} style={{ width: '14rem', display: 'flex', flexDirection: 'column' }}>
-                  <img src={country.png} alt={country.common} width={50} style={{ margin: 'auto' }} />
-                  {country.common}
-                </div>
-              ))}
-          </div>
-        )
-      }
+
+
+      <div className={styles.countriesContainer}>
+        {Array.isArray(dataToShow) &&
+          dataToShow.map((country) => (
+            <div key={country.common} style={{ width: '14rem', display: 'flex', flexDirection: 'column' }}>
+              <img src={country.png} alt={country.common} width={50} style={{ margin: 'auto' }} />
+              {country.common}
+            </div>
+          ))}
+      </div>
+
+
 
     </>
   );
